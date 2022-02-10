@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Rowdies&display=swap");
+* {
+  font-family: "Rowdies", cursive;
+}
+
+* html,
+* body {
+  height: 100%;
+  text-align: center;
+}
+
+* body #app {
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+* body #app .form-signin {
+  border: 2px solid #000;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+/*# sourceMappingURL=index.css.map */

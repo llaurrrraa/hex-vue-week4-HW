@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@700&family=Rowdies&display=swap");
+* {
+  font-family: "Rowdies", Noto Sans TC, cursive, sans-serif;
+}
+
+* html,
+* body {
+  height: 100%;
+}
+
+* body #app {
+  min-height: 100vh;
+}
+/*# sourceMappingURL=products.css.map */
