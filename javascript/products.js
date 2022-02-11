@@ -5,6 +5,13 @@ let deleteModal = {};
 const apiUrl = 'https://vue3-course-api.hexschool.io/v2';
 const apiPath = 'llaurrrraa-hexschool';
 
+const uploadImg = {
+    template:`<input type="file" class="form-control mb-1" id="file" placeholder="請輸入圖片連結">`,
+    methods:{
+        
+    }
+}
+
 const app = Vue.createApp({
     data(){
         return{
@@ -25,7 +32,7 @@ const app = Vue.createApp({
             const url = `${apiUrl}/api/user/check`;
             axios.post(url)
                 .then( res => {
-                    console.log(res);
+                    // console.log(res);
                     this.getData();
                 })
                 .catch( err => {
@@ -75,9 +82,21 @@ const app = Vue.createApp({
 });
 
 app.component('productModal',{
+    data(){
+        return{
+            imgUrl: null,
+            file:'',
+        }
+    },
     props:['tempProduct','isNew'],
     template:'#templateForProductModal',
     methods:{
+        localImg(event){
+            // console.log(event.target.files);
+            this.file = event.target.files[0];
+            this.imgUrl = URL.createObjectURL(this.file);
+            // console.log(this.imgUrl);
+        },
         updateProduct(){
             let url = `${apiUrl}/api/${apiPath}/admin/product`;
             let method = 'post';
@@ -88,13 +107,28 @@ app.component('productModal',{
             }
             axios[method](url, { data : this.tempProduct })
                 .then( res => {
+                    const formData = new FormData();
+                    formData.append('file-to-upload', this.file);
+                    axios.post(`${apiUrl}/api/${apiPath}/admin/upload`, formData)
+                            .then( res => {
+                                console.log(res);
+                            })
+                            .catch( err => {
+                                console.log(err);
+                            })
+                    // console.log(formData);
                     this.$emit('getProducts');
                     productModal.hide();
                 })
                 .catch( err => {
-                    alert(err.data);
+                    console.dir(err.data);
                 })
-        }
+        },
+        addNewImg(){
+            this.tempProduct.imagesUrl = [];
+            this.tempProduct.imagesUrl.push('');
+        },
+        
     }
 });
 app.component('delProductModal',{
