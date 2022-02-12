@@ -114,7 +114,7 @@ app.component('productModal',{
                                 console.log(res);
                             })
                             .catch( err => {
-                                console.log(err);
+                                alert(err.response);
                             })
                     // console.log(formData);
                     this.$emit('getProducts');
