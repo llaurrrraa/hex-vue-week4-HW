@@ -1,3 +1,3 @@
 # week4_HW
  componentized the homework / 
-<a href="https://llaurrrraa.github.io/week4_HW/"> DEMO </a>
+<a href="https://llaurrrraa.github.io/hex-vue-week4-HW/"> DEMO </a>
